@@ -213,7 +213,7 @@ void MainWindow::printInfo(int x, int y)
     plot->replot();
 }
 
-void MainWindow::timerSlotForMainThread()         // отрисовка графика из гл. потока - происходит по таймеру
+void MainWindow::timerSlotForMainThread()         // отрисовка графика гл. потока - происходит по таймеру
 {
     int x = (qrand() % endline) + startline;
     startline = x+1;
