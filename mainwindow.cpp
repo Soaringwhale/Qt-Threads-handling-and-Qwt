@@ -118,7 +118,7 @@ bool MainWindow::startClicked()
        isStoppedNow = false;
        isThreadExist = true;
        points.clear();
-       addThread();                      // начало отрисовки красного графика с нуля
+       addThread();                      // начало отрисовки с нуля
        curve->attach(plot);
        plot->replot();
        return true;
@@ -127,7 +127,7 @@ bool MainWindow::startClicked()
        isStoppedNow = false;
        isPausedNow = false;                            
         emit mainSignalResume();
-        mWait.wakeOne();               // продолжение отрисовки из состояния паузы
+        mWait.wakeOne();               // продолжение отрисовки из паузы
         return true;
    }
    return false;
@@ -137,7 +137,7 @@ bool MainWindow::pauseClicked()
 {
      qDebug() << "paused";
      isPausedNow = true;
-     emit mainSignalPause();          // pause
+     emit mainSignalPause();          // пауза рабочего потока
 }
 
 bool MainWindow::stopClicked()
@@ -149,7 +149,7 @@ bool MainWindow::stopClicked()
       }
       mWait.wakeOne();
       QThread::msleep(300);
-      emit stopAll();                   // stop
+      emit stopAll();                   // остановка рабочего потока
       QThread::msleep(300);
       isThreadExist = false;
       map->clear();
